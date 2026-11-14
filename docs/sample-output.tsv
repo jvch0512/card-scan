@@ -1,0 +1,10 @@
+# 3 files scanned, 9 findings
+high	CARD001	examples/data/app.log:2	card number: Visa 453200******0009 (16 digits)
+high	CARD001	examples/data/app.log:3	card number: Mastercard 510000******0008 (16 digits)
+info	CARD003	examples/data/app.log:4	public test card number: Visa 411111******1111 (16 digits)
+info	CARD003	examples/data/app.log:5	public test card number: Mastercard 555555******4444 (16 digits)
+high	CARD001	examples/data/app.log:7	card number: American Express 370000*****0002 (15 digits)
+high	CARD001	examples/data/export.csv:2	card number: Discover 601100******0004 (16 digits)
+high	CARD001	examples/data/export.csv:3	card number: JCB 352800******0007 (16 digits)
+high	CARD001	examples/data/export.csv:4	card number: Diners Club 360000****0008 (14 digits)
+low	CARD002	examples/data/export.csv:6	Luhn-valid number, unknown issuer: 900000******0001
