@@ -2,3 +2,4 @@ build/
 bin/card-scan
 *.ali
 *.o
+results.sarif

@@ -2,6 +2,8 @@
 
 Before a PCI DSS assessment someone has to answer "where do card numbers actually live?" card-scan walks a directory (logs, exports, config, dumps), finds card numbers that pass the Luhn check and a known issuer prefix, and reports file and line with the number masked to the first six and last four digits. The full number is never printed or stored.
 
+![Terminal demo of card-scan on its sample data](docs/demo.svg)
+
 **Live demo:** https://jvch0512.github.io/card-scan/ (Synthetic files with public test card numbers and invented numbers.)
 
 Ada 2012 (GNAT), standard library only. The demo page is rendered from the tool's `--tsv` output by `scripts/site.py` (Python 3, only needed to regenerate the page).
@@ -46,3 +48,13 @@ make test    # 58 checks
 ```
 
 MIT.
+
+## Code scanning (SARIF)
+
+`scripts/tsv2sarif.py` converts the `--tsv` output into SARIF 2.1.0, so findings show up in GitHub code scanning:
+
+```sh
+./bin/card-scan examples/data --tsv | python3 scripts/tsv2sarif.py --tool card-scan --prefix examples/data > results.sarif
+```
+
+Upload `results.sarif` with `github/codeql-action/upload-sarif`. Severities map to SARIF levels (critical and high to error, medium to warning, low and info to note) and to a `security-severity` score.
